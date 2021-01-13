@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\LightLucky\\DynamicArray\\DynamicArray.csproj": {}
+    "C:\\DynamicArray\\DynamicArray.csproj": {}
   },
   "projects": {
-    "C:\\Users\\LightLucky\\DynamicArray\\DynamicArray.csproj": {
+    "C:\\DynamicArray\\DynamicArray.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\LightLucky\\DynamicArray\\DynamicArray.csproj",
+        "projectUniqueName": "C:\\DynamicArray\\DynamicArray.csproj",
         "projectName": "DynamicArray",
-        "projectPath": "C:\\Users\\LightLucky\\DynamicArray\\DynamicArray.csproj",
+        "projectPath": "C:\\DynamicArray\\DynamicArray.csproj",
         "packagesPath": "C:\\Users\\LightLucky\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\LightLucky\\DynamicArray\\obj\\",
+        "outputPath": "C:\\DynamicArray\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"
@@ -41,6 +41,22 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "dependencies": {
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[16.8.3, )"
+            },
+            "xunit": {
+              "target": "Package",
+              "version": "[2.4.1, )"
+            },
+            "xunit.runner.visualstudio": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.4.3, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
