@@ -2,68 +2,79 @@ using Xunit;
 
 namespace DynamicArray.Tests
 {
-    //Class created for testing purposes
-    class Book
-    {
-        public string title {get; set;}
-    }
-
     public class DynamicArrayTests
     {
-        private DynamicArray<Book> books = new DynamicArray<Book>
+        [Fact]
+        public void Test_Can_Add_Elements()
         {
-            new Book {title = "The Last Wish"},
-            new Book {title = "The Song Of Ice and Fire"},
-        };
+            DynamicArray<int> dArr = new DynamicArray<int>();
+
+            int[] arr = {1,2,3,4,5,6,7};
+
+            for(int i = 0; i < arr.Length; i++)
+            {
+                dArr.Add(arr[i]);
+            }
+
+            for(int i = 0; i < arr.Length; i++)
+            {
+                Assert.Equal(arr[i], dArr[i]);
+            }
+        }
 
         [Fact]
-        public void Test_Can_Add_Element_To_Array()
+        public void Test_Can_Remove_Elements_At_Index()
+        {
+            DynamicArray<int> dArr = new DynamicArray<int>{1,2,3,4,5,6,7};
+
+            for(int i = 0; i < dArr.Size; i++)
+            {
+                //Returns removed element
+                int elem = dArr.RemoveAt(i);
+
+                Assert.DoesNotContain(elem, dArr);
+            }
+        }
+
+        [Fact]
+        public void Test_Can_Get_Index_Of_Element()
         {
             bool result = false;
 
-            Book testBook = new Book {title = "Lord Of The Rings"};
+            DynamicArray<int> dArr = new DynamicArray<int>{1,2,3,4,5,6,7};
 
-            books.Add(testBook);
+            int elem =  5;
+            int index = dArr.IndexOf(elem);
 
-            for(int i = 0; i < books.Size; i++)
+            for(int i = 0; i < dArr.Size; i++)
             {
-                if(books[i] == testBook) result = true;
+                if(dArr[i] == elem && i == index) result = true;
             }
 
             Assert.True(result);
         }
 
         [Fact]
-        public void Test_Can_Remove_Element_From_Array()
+        public void Test_Can_Remove_Elements()
         {
-            bool result = true;
-
-            int index = 1;
-
-            Book testBook = books[index];
+            DynamicArray<int> dArr = new DynamicArray<int>{120,60,90,95,100};
             
-            books.RemoveAt(index);
+            Assert.True(dArr.Remove(120));
+            Assert.True(dArr.Remove(60));
+            Assert.True(dArr.Remove(90));
+            Assert.True(dArr.Remove(95));
+            Assert.True(dArr.Remove(100));
 
-            for(int i = 0; i < books.Size; i++)
-            {
-                if(books[i] == testBook) result = false;
-            }
-
-            Assert.True(result);
         }
 
         [Fact]
         public void Test_Can_Clear_Array()
         {
-            bool result = true;
+            DynamicArray<int> dArr = new DynamicArray<int>{1,2,3,4,5,6,7};
 
-            books.Clear();
+            dArr.Clear();
 
-            for(int i = 0; i<books.Size; i++){
-                if(books[i] != null) result = false;
-            }
-            
-            Assert.True(result);
+            Assert.Empty(dArr);
         }
     }
 }

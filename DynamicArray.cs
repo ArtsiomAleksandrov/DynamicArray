@@ -60,9 +60,11 @@ namespace DynamicArray
             array[size++] = elem;
         }
 
-        public void RemoveAt(int index)
+        public T RemoveAt(int index)
         {
             if (index >= size || index < 0) throw new IndexOutOfRangeException();
+
+            T removedElem = array[index];
 
             T[] newArr = new T[size-1];
 
@@ -76,6 +78,25 @@ namespace DynamicArray
             array = newArr;
 
             capacity = --size;
+
+            return removedElem;
+        }
+
+        public int IndexOf(T elem)
+        {
+            for(int i = 0; i < size; i++)
+            {
+                if(array[i].Equals(elem)) return i;
+            }
+            return -1;
+        }
+
+        public bool Remove(T elem)
+        {
+            int index = IndexOf(elem);
+            if(index == -1) return false;
+            RemoveAt(index);
+            return true;
         }
         
         public void Clear()
